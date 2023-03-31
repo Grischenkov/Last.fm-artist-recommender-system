@@ -8,8 +8,9 @@ class Menu():
         return self.__selection
 
     def show(self) -> None:
-        print("\n".join(f"{index + 1}: {value}" for index, value in enumerate(self.__items)))
-        self.__get_selection()
+        if len(self.__items) != 0:
+            print("\n".join(f"{index + 1}: {value}" for index, value in enumerate(self.__items)))
+            self.__get_selection()
 
     def clear(self) -> None:
         self.__selection = None
