@@ -1,3 +1,5 @@
+import pandas as pd
+
 class Solution():
     __artists_path = "data/lastfm_artist_list.csv"
     __scrobbles_path = "data/lastfm_user_scrobbles.csv"
@@ -12,21 +14,22 @@ class Solution():
         try:
             self.__artists_dict = pd.read_csv(self.__artists_path, index_col="artist_id")["artist_name"].to_dict()
         except:
-            print("Ошибка загрузки данных об исполнителях!")
+            print("Ошибка загрузки данных об исполнителях!\n")
             return False
         try:
             self.__scrobbles_df = pd.read_csv(self.__scrobbles_path)
         except:
-            print("Ошибка загрузки данных о прослушиваниях!")
+            print("Ошибка загрузки данных о прослушиваниях!\n")
             return False
         return True
     
     def get_name(self) -> bool:
         try:
-            self.__target = int(self.__get_id_by_name(input(f"Выбор: ")))
+            print()
+            self.__target = int(self.__get_id_by_name(input(f"Имя исполнителя: ")))
             return True
         except:
-            print(f"Исполнитель не найден!")
+            print(f"Исполнитель не найден!\n")
             return False
 
     def get_n_similar(self) -> list:
