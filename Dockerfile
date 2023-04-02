@@ -8,7 +8,12 @@ RUN pip install --upgrade pip
 ADD requirements.txt /app/
 RUN pip install -r /app/requirements.txt
 
-ADD data /app/data
+RUN mkdir /app/data
+ADD data/lastfm_artist_list.csv /app/data/
+ADD data/lastfm_user_scrobbles.csv /app/data/
+
+RUN mkdir /app/research
+ADD research/als.pkl /app/research/
 
 ADD main.py /app/
 ADD menu.py /app/
