@@ -29,7 +29,7 @@ class Solution():
     def get_name(self) -> bool:
         try:
             print()
-            self.__target = int(self.__get_id_by_name(input(f"Имя исполнителя: ")))
+            self.__target = int(self.__get_id_by_name(input(f"Имя исполнителя: ").strip().lstrip()))
             return True
         except:
             print(f"Исполнитель не найден!\n")
