@@ -23,15 +23,20 @@ python main.py
 ```
 
 ## Примеры работы
-> Имя исполнителя: Rihanna
+```
+Имя исполнителя: Rihanna
 Похожие: Beyonce, Britney Spears, Kat Deluna, Christina Aguilera, Black Eyed Peas
+```
 
-> Имя исполнителя: 50 Cent
+```
+Имя исполнителя: 50 Cent
 Похожие: G-Unit, Nate Dogg, Dj Whoo Kid, Donguralesko & Dj Kostek, Rychu Peja Solufka
+```
 
-> Имя исполнителя: Metallica
+```
+Имя исполнителя: Metallica
 Похожие: Tsjuder, Opera Ix, Darkened Nocturn Slaughtercult, Grand Belial's Key, Limbonic Art
-
+```
 
 ## EDA
 Код представлен в ноутбуке ['data/EDA.ipynb'](https://github.com/Grischenkov/Last.fm-artist-recommender-system/blob/main/data/EDA.ipynb).
