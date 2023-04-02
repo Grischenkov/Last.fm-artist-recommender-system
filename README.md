@@ -2,6 +2,7 @@
 
 ## Задание
 *Цель:* разработать консольное приложение для поиска похожих музыкальных исполнителей
+
 *Датасет:* https://www.kaggle.com/datasets/pcbreviglieri/lastfm-music-artist-scrobbles
 
 ## Инструкия по запуску
