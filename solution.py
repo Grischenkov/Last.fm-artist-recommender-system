@@ -1,14 +1,16 @@
+import pickle
+
 import pandas as pd
 
 class Solution():
+    __model_path = "research/als.pkl"
     __artists_path = "data/lastfm_artist_list.csv"
-    __scrobbles_path = "data/lastfm_user_scrobbles.csv"
     
     def __init__(self, n_items: int = 4) -> None:
+        self.__model = None
         self.__target = None
         self.__n_items = n_items
         self.__artists_dict = None
-        self.__scrobbles_df = None
 
     def load_data(self) -> bool:
         try:
@@ -17,9 +19,10 @@ class Solution():
             print("Ошибка загрузки данных об исполнителях!\n")
             return False
         try:
-            self.__scrobbles_df = pd.read_csv(self.__scrobbles_path)
+            with open(self.__model_path, "rb") as f:
+                self.__model = pickle.load(f)
         except:
-            print("Ошибка загрузки данных о прослушиваниях!\n")
+            print("Ошибка загрузки модели!\n")
             return False
         return True
     
@@ -34,16 +37,14 @@ class Solution():
 
     def get_n_similar(self) -> list:
         try:
-            #TODO Добавить решение
-            #Заглушка для тестирования
-            import random
-            return self.__get_names_from_indexes(random.sample(range(1, len(self.__artists_dict)), self.__n_items))
+            indices, distances = self.__model.similar_items(self.__target-1, N=5, filter_items=[self.__target-1])
+            return self.__get_names_from_indexes([x+1 for x in indices])
         except:
             return []
     
     def clear(self) -> None:
         self.__target = None
-    
+
     def __get_id_by_name(self, name: str) -> int:
         return next((i for i, n in self.__artists_dict.items() if n == name), None)
 
